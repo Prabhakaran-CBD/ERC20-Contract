@@ -1,4 +1,5 @@
-Blockchain
+Blockchain:
+---------------
 The smart contracts are developed for the ethereum blockchain. Ethereum is a decentralized platform that runs smart contracts. Contracts can be deployed on the Ethereum Virtual Machine (EVM). Once deployed it can be accessed globally. These contracts are enforced and certified by parties that we call miners. Miners are multiple computers who add a transaction (Addition or modification of the state) to a public ledger that we call a block. Multiple blocks constitute a blockchain.
 We pay these miners with something called Gas, which is the cost to run a contract. When you publish a smart contract, or execute a function of a smart contract, or transfer money to another account, you pay some ether that gets converted into gas.
 Smart Contracts
