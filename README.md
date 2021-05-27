@@ -91,7 +91,8 @@ Now the contract is deployed on the rinkeby network. You can access it using a w
 
 KYC Smart Contract:
 -
-Know Your Customer 
+Know Your Customer
+
 Ethereum Blockchain Smart Contract Solidity/Ganache/Remix IDE
 
 The goal of this project was to design a smart contract to do a pre-validation process before allowing them to buy the tokens, once they approved then those customers will added into whitelisted customers list. A user would upload their basic information using a GUI form. A KYC admin layer would have to validate after verifying their identity. 
