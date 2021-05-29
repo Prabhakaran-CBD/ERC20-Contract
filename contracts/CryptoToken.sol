@@ -13,7 +13,7 @@ contract CryptoToken is ERC20 {
     //and taking that initial supply and send to minting function(_mint from ERC20) below to create the token
     constructor(uint256 initialSupply)
         
-        ERC20("StarBucks Cappucino Token", "CAPPU") //name and symbol
+        ERC20("Crypto Token", "CAPPU") //name and symbol
     {
         //mint function is called from inherited ERC20 contract
         //this mint function is used to add a initialSupply to the totalSupply of tokens
