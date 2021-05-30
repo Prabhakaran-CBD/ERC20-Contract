@@ -3,6 +3,7 @@ pragma solidity >=0.4.22 <0.9.0;
 
 import "../contracts/utils/SafeMath.sol";
 import "./ERC20Interface.sol";
+import "../contracts/utils/Address.sol";
 
 
 //This contract allows to purchase tokens with ether... 
@@ -10,6 +11,7 @@ import "./ERC20Interface.sol";
 //but doing this before do check preValidationPurchase by knowing the customer (KYC)
 contract ICOCrowdSale  {
     using SafeMath for uint256;
+    using Address for address;
     
     // The token being sold
     ERC20Interface private _token;
@@ -122,11 +124,8 @@ contract ICOCrowdSale  {
     //to do safe transder check EIP protocal - call the checkIsContract function
     //beneficiary - Address performing the token purchase
     //tokenAmount - Number of tokens to be emitted
-    //fail to call if it other than a contract like EOA, calling from constructor, inactive contracts etc..
-    //returns true only if it is a contract
-   
    function transferTokens(address beneficiary, uint256 tokenAmount) internal {
-       require (checkIsContract(address(_token)),"This call is from non-contract account"); 
+        //call the transfer function from ERC20 interface   
        _token.transfer(beneficiary, tokenAmount);
     } 
      
@@ -184,3 +183,4 @@ contract ICOCrowdSale  {
         return _rate;
     }
 }
+
