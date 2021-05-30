@@ -30,16 +30,6 @@ contract ICOCrowdSale  {
     //in real case this can be wirtten in function to get the cap even can increase or decrease
     uint private _hardCap = 300000000000000000000;
     
-
-     //this event used to emit to get to know purchaser, who got the tokens as beneficiary, 
-     //how much paid for purchase
-    event TokensPurchased(
-        address indexed purchaser,
-        address indexed beneficiary,
-        uint256 value,
-        uint256 amount
-    );
-
     /**
      *  rate Number of token units a buyer gets per wei
      *  1 wei will give you 1 unit, or 0.001 TOK.
@@ -62,7 +52,18 @@ contract ICOCrowdSale  {
         _wallet = walletAddress;
         _token = tokenAddress;
     }
+    
 
+     //this event used to emit to get to know purchaser, who got the tokens as beneficiary, 
+     //how much paid for purchase
+    event TokensPurchased(
+        address indexed purchaser,
+        address indexed beneficiary,
+        uint256 value,
+        uint256 amount
+    );
+
+    
     /*
       Note - Need enough gas to call the purchaseToken function 
       Sending ether and calling this function directly when purchasing tokens from a contract.
