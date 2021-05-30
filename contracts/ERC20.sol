@@ -3,10 +3,14 @@ pragma solidity >=0.4.22 <0.9.0;
 
 import "./ERC20Interface.sol";
 import "../contracts/utils/SafeMath.sol";
+import "../contracts/utils/Address.sol";
 
 
 //this contract is used to create the token using ERC20 standard interface
 contract ERC20 is ERC20Interface {
+
+    using Address for address;
+
     
     //using SafeMath library for uint to avoid overflow error
     using SafeMath for uint;
@@ -102,8 +106,15 @@ contract ERC20 is ERC20Interface {
       @return Whether the transfer was successful or not
       This function emits the Transfer event. 
     */
-    
+
+    //In ERC20 token if tokens transfer to the contract address then those tokens are burned and not 
+    //get it back, so need to check the address before transfer those tokens 
+   
     function transfer(address _toRecipient, uint _tokenValue) public override returns(bool) {
+       //transfer should not made to the contract address, so validate the address not should be a contract 
+        require(!(_toRecipient).checkIsContract(), "Address: call make to contract address");
+        require(_toRecipient != address(0), "ERC20: transfer from the zero address");
+        
         require(balances[msg.sender] >= _tokenValue && _tokenValue > 0, "Token value is zero or higher than the balance amount of token" );
         //Note here transfer means not doing account.transfer call rather moving the token around
         balances[msg.sender] -= _tokenValue; //taken the token value from the owner/token supplier
